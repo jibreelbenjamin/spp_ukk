@@ -160,7 +160,7 @@
 </x-app>
 
 <div id="hs-danger-alert" class="hs-overlay hidden size-full fixed top-0 start-0 z-80 overflow-x-hidden overflow-y-auto" role="dialog" tabindex="-1" aria-labelledby="hs-danger-alert-label">
-  <div class="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all md:max-w-2xl md:w-full m-3 md:mx-auto">
+  <div class="hs-overlay-animation-target hs-overlay-open:scale-100 hs-overlay-open:opacity-100 scale-95 opacity-0 ease-in-out transition-all duration-200 md:max-w-2xl md:w-full m-3 md:mx-auto min-h-[calc(100%-56px)] flex items-center">
     <div class="relative flex flex-col bg-white border border-gray-200 shadow-2xs rounded-xl overflow-hidden">
       <div class="absolute top-2 end-2">
         <button type="button" class="size-8 inline-flex justify-center items-center gap-x-2 rounded-full border border-transparent bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-hidden focus:bg-gray-200 disabled:opacity-50 disabled:pointer-events-none" aria-label="Close" data-hs-overlay="#hs-danger-alert">
@@ -184,7 +184,7 @@
               Konfirmasi Aksi
             </h3>
             <p id="modal-text" class="text-gray-500">
-              Permanently remove your Personal Account and all of its contents from the Vercel platform. This action is not reversible, so please continue with caution.
+              Text
             </p>
           </div>
         </div>
@@ -211,7 +211,6 @@
   {{ session('sKelas') }}
 </x-toast>
 @endif
-
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {

@@ -7,7 +7,6 @@ $style_idle = 'w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
     @vite('resources/css/app.css')
     @vite('resources/css/style.css')
     @vite('resources/js/app.js')
@@ -18,6 +17,7 @@ $style_idle = 'w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-
   display: none !important;
 }
     </style>
+    <title>{{ $halaman }} - SPP Online</title>
   </head>
   <body>
     <!-- ========== HEADER ========== -->
@@ -207,19 +207,6 @@ $style_idle = 'w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-
     </div>
     <!-- End Content -->
     <!-- ========== END MAIN CONTENT ========== -->
-
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdn.datatables.net/2.3.2/js/dataTables.js"></script>
-  <script>
-window.addEventListener('load', () => {
-  // Inisialisasi DataTable
-  const table = $('#myTable').DataTable({
-    paging: true,
-    searching: true
-  });
-});
-
-    </script>
   </body>
 </html>
 

@@ -36,7 +36,7 @@ class KelasController extends Controller
             'nama_kelas' => 'required|string|min:3|max:255',
             'jurusan' => 'required|string|min:3|max:255',
         ], [
-            'nama_kelas.required' => 'Nama kelas wajib diisi.',
+            'nama_kelas.required' => 'Nama kelas harus diisi.',
             'jurusan.required' => 'Jurusan tidak boleh kosong.',
             'nama_kelas.min' => 'Nama kelas minimal 3 karakter.',
             'jurusan.min' => 'Jurusan minimal 3 karakter'
@@ -74,6 +74,11 @@ class KelasController extends Controller
         $validate = $request->validate([
             'nama_kelas' => 'required|string|min:3|max:255',
             'jurusan' => 'required|string|min:3|max:255',
+        ], [
+            'nama_kelas.required' => 'Nama kelas harus diisi.',
+            'jurusan.required' => 'Jurusan tidak boleh kosong.',
+            'nama_kelas.min' => 'Nama kelas minimal 3 karakter.',
+            'jurusan.min' => 'Jurusan minimal 3 karakter'
         ]);
 
         $kelas->update($validate);
