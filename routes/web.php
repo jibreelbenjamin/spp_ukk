@@ -37,6 +37,10 @@ Route::get('/daftar-kelas', [KelasController::class, 'index'])->name('kelas.inde
 Route::get('/daftar-pembayaran', [PembayaranController::class, 'index'])->name('pembayaran.index');
 
 // create
+Route::post('/daftar-pembayaran', [PembayaranController::class, 'store'])->name('pembayaran.save');
+Route::get('/tambah-pembayaran', function () {
+    return view('dashboard.tambah_pembayaran', ['title' => 'Tambah Pembayaran', 'page' => 'd_pembayaran']);
+});
 Route::post('/daftar-spp', [SppController::class, 'store'])->name('spp.save');
 Route::get('/tambah-spp', function () {
     return view('dashboard.tambah_spp', ['title' => 'Tambah SPP', 'page' => 'd_spp']);
@@ -51,11 +55,14 @@ Route::get('/tambah-kelas', function () {
 });
 
 // delete
+Route::delete('/daftar-pembayaran/{pembayaran}', [PembayaranController::class, 'destroy'])->name('pembayaran.delete');
 Route::delete('/daftar-spp/{spp}', [SppController::class, 'destroy'])->name('spp.delete');
 Route::delete('/daftar-petugas/{user}', [UserController::class, 'destroy'])->name('petugas.delete');
 Route::delete('/daftar-kelas/{kelas}', [KelasController::class, 'destroy'])->name('kelas.delete');
 
 // update
+Route::get('/daftar-pembayaran/{pembayaran}/edit', [PembayaranController::class, 'edit'])->name('pembayaran.edit');
+Route::put('/daftar-pembayaran/{pembayaran}/edit', [PembayaranController::class, 'update'])->name('pembayaran.update');
 Route::get('/daftar-spp/{spp}/edit', [SppController::class, 'edit'])->name('spp.edit');
 Route::put('/daftar-spp/{spp}/edit', [SppController::class, 'update'])->name('spp.update');
 Route::get('/daftar-petugas/{user}/edit', [UserController::class, 'edit'])->name('petugas.edit');

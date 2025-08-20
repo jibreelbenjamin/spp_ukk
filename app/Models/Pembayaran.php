@@ -11,7 +11,7 @@ class Pembayaran extends Model
 
     protected $table = 'pembayaran';
     protected $primaryKey = 'id_pembayaran';
-    protected $fillable = ['nama'];
+    protected $fillable = ['nama_pembayaran'];
 
     public function invoices()
     {

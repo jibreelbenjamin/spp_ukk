@@ -9,7 +9,7 @@
     <title>Error 404</title>
 </head>
 <body>
-    <div class="max-w-3xl flex flex-col mx-auto size-full">
+    <div class="max-w-3xl flex flex-col mx-auto size-full h-screen">
       <!-- ========== HEADER ========== -->
       <header class="mb-auto flex justify-center z-50 w-full py-4">
         <nav class="px-4 sm:px-6 lg:px-8">
@@ -37,7 +37,7 @@
       <!-- ========== FOOTER ========== -->
       <footer class="mt-auto text-center py-5">
         <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
-          <p class="text-sm text-gray-500">© All Rights Reserved. Jibreel Benjamin 2022.</p>
+          <p class="text-sm text-gray-500">© All Rights Reserved. Jibreel Benjamin 2025.</p>
         </div>
       </footer>
       <!-- ========== END FOOTER ========== -->

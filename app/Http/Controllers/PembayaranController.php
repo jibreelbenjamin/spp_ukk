@@ -32,7 +32,14 @@ class PembayaranController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $request->validate([
+            'nama_pembayaran' => 'required|string|min:3',
+        ], [
+            'nama_pembayaran.required' => 'Nama Pembayaran harus diisi.',
+            'nama_pembayaran.min' => 'Nama Pembayaran minimal 3 karakter.',
+        ]);
+        Pembayaran::create($validate);
+        return redirect()->route('pembayaran.index')->with('sPembayaran', 'Pembayaran berhasil ditambahkan!');
     }
 
     /**
@@ -48,7 +55,11 @@ class PembayaranController extends Controller
      */
     public function edit(Pembayaran $pembayaran)
     {
-        //
+        $pembayaran = Pembayaran::findOrFail($pembayaran->id_pembayaran);
+        return view('dashboard.update_pembayaran', [
+            'title' => 'Edit Pembayaran',
+            'page' => 'd_pembayaran'
+        ], compact('pembayaran'));
     }
 
     /**
@@ -56,7 +67,16 @@ class PembayaranController extends Controller
      */
     public function update(Request $request, Pembayaran $pembayaran)
     {
-        //
+        $validate = $request->validate([
+            'nama_pembayaran' => 'required|string|min:3',
+        ], [
+            'nama_pembayaran.required' => 'Nama Pembayaran harus diisi.',
+            'nama_pembayaran.min' => 'Nama Pembayaran minimal 3 karakter.',
+        ]);
+
+        $pembayaran->update($validate);
+        return redirect()->route('pembayaran.index')
+            ->with('sPembayaran', 'Pembayaran berhasil diperbarui!');
     }
 
     /**
@@ -64,6 +84,8 @@ class PembayaranController extends Controller
      */
     public function destroy(Pembayaran $pembayaran)
     {
-        //
+        $pembayaran->delete();
+        return redirect()->route('pembayaran.index')
+            ->with('sPembayaran', 'Pembayaran berhasil dihapus!');
     }
 }
