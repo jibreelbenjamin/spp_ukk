@@ -20,4 +20,8 @@ class Spp extends Model
     {
         return $this->hasMany(Siswa::class, 'id_spp');
     }
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class, 'id_spp', 'id_spp');
+    }
 }

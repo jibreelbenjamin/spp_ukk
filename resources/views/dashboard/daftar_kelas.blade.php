@@ -132,7 +132,7 @@
           <!-- End Table -->
 
           <!-- Footer -->
-          {{-- <div class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-t border-gray-200">
+          <div class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-t border-gray-200">
             <div class="max-w-sm space-y-3">
               <span class="text-sm text-gray-500">
                 Total <span class="font-semibold">100</span> results
@@ -152,7 +152,7 @@
                 </button>
               </div>
             </div>
-          </div> --}}
+          </div>
           <!-- End Footer -->
         </div>
       </div>

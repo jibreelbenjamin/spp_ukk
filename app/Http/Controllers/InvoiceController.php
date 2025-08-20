@@ -13,9 +13,9 @@ class InvoiceController extends Controller
     public function index()
     {
         $invoices = Invoice::all();
-        return view('dashboard.daftar_spp', [
-            'title' => 'Daftar SPP',
-            'page' => 'd_spp'
+        return view('dashboard.daftar_faktur', [
+            'title' => 'Daftar Faktur',
+            'page' => 'd_invoice'
         ], compact('invoices'));
     }
 
