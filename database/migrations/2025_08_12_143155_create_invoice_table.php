@@ -42,7 +42,15 @@ return new class extends Migration
         Schema::create('invoice', function (Blueprint $table) {
             $table->id('id_invoice');
             $table->foreignId('id_user')->constrained('users', 'id_user')->onDelete('cascade');
-            $table->foreignId('nisn')->constrained('siswa', 'nisn')->onDelete('cascade');
+
+            $table->unsignedBigInteger('nisn'); // biar nisn bisa diupdate
+            $table->foreign('nisn')
+                ->references('nisn')
+                ->on('siswa')
+                ->onDelete('cascade')
+                ->onUpdate('cascade'); // kunci
+
+
             $table->string('tanggal_bayar')->nullable();
             $table->string('bulan_dibayar');
             $table->string('tahun_dibayar');

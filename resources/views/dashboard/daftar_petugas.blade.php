@@ -237,7 +237,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const nama = this.dataset.nama;
 
             formHapus.action = `/daftar-petugas/${id}`;
-            modalText.innerHTML = `Apakah kamu yakin ingin menghapus petugas <strong>"${nama}"</strong>? Faktur yang dibuat oleh petugas ini akan otomatis terhapus dan tidak dapat dikembalikan`;
+            modalText.innerHTML = `Apakah kamu yakin ingin menghapus Petugas <strong>"${nama}"</strong>? Faktur yang dibuat oleh petugas ini akan otomatis terhapus dan tidak dapat dikembalikan`;
         });
     });
 });

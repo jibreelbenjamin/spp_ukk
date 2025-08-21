@@ -11,8 +11,10 @@ class Siswa extends Model
 
     protected $table = 'siswa';
     protected $primaryKey = 'nisn';
-    public $incrementing = true; // if you used $table->id('nisn') in migration
+    public $incrementing = false;
+    protected $keyType = 'int';
     protected $fillable = [
+        'nisn',
         'nis',
         'nama_siswa',
         'id_kelas',

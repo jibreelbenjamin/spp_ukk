@@ -50,7 +50,6 @@ class UserController extends Controller
         ]);
         User::create($validate);
         return redirect()->route('petugas.index')->with('sPetugas', 'Petugas berhasil ditambahkan!');
-
     }
 
     /**
@@ -69,7 +68,7 @@ class UserController extends Controller
         $petugasIndex = User::all();
         $petugasDetail = $user;
         return view('dashboard.update_petugas', [
-            'title' => 'Edit petugas',
+            'title' => 'Edit Petugas',
             'page' => 'd_petugas'
         ], compact('user', 'petugasDetail'));
     }

@@ -37,6 +37,9 @@ Route::get('/daftar-kelas', [KelasController::class, 'index'])->name('kelas.inde
 Route::get('/daftar-pembayaran', [PembayaranController::class, 'index'])->name('pembayaran.index');
 
 // create
+Route::post('/daftar-siswa', [SiswaController::class, 'store'])->name('siswa.save');
+Route::get('/tambah-siswa', [SiswaController::class, 'create'])->name('siswa.create');
+
 Route::post('/daftar-pembayaran', [PembayaranController::class, 'store'])->name('pembayaran.save');
 Route::get('/tambah-pembayaran', function () {
     return view('dashboard.tambah_pembayaran', ['title' => 'Tambah Pembayaran', 'page' => 'd_pembayaran']);
@@ -51,16 +54,19 @@ Route::get('/tambah-petugas', function () {
 });
 Route::post('/daftar-kelas', [KelasController::class, 'store'])->name('kelas.save');
 Route::get('/tambah-kelas', function () {
-    return view('dashboard.tambah_kelas', ['title' => 'Tambah Siswa', 'page' => 'd_kelas']);
+    return view('dashboard.tambah_kelas', ['title' => 'Tambah Kelas', 'page' => 'd_kelas']);
 });
 
 // delete
+Route::delete('/daftar-siswa/{siswa}', [SiswaController::class, 'destroy'])->name('siswa.delete');
 Route::delete('/daftar-pembayaran/{pembayaran}', [PembayaranController::class, 'destroy'])->name('pembayaran.delete');
 Route::delete('/daftar-spp/{spp}', [SppController::class, 'destroy'])->name('spp.delete');
 Route::delete('/daftar-petugas/{user}', [UserController::class, 'destroy'])->name('petugas.delete');
 Route::delete('/daftar-kelas/{kelas}', [KelasController::class, 'destroy'])->name('kelas.delete');
 
 // update
+Route::get('/daftar-siswa/{siswa}/edit', [SiswaController::class, 'edit'])->name('siswa.edit');
+Route::put('/daftar-siswa/{siswa}/edit', [SiswaController::class, 'update'])->name('siswa.update');
 Route::get('/daftar-pembayaran/{pembayaran}/edit', [PembayaranController::class, 'edit'])->name('pembayaran.edit');
 Route::put('/daftar-pembayaran/{pembayaran}/edit', [PembayaranController::class, 'update'])->name('pembayaran.update');
 Route::get('/daftar-spp/{spp}/edit', [SppController::class, 'edit'])->name('spp.edit');

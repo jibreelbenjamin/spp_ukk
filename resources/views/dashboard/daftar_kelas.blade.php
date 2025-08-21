@@ -224,7 +224,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const nama = this.dataset.nama;
 
             formHapus.action = `/daftar-kelas/${id}`;
-            modalText.innerHTML = `Apakah kamu yakin ingin menghapus kelas <strong>"${nama}"</strong>? Siswa dan Faktur yang terkait dengan kelas ini akan otomatis terhapus dan tidak dapat dikembalikan`;
+            modalText.innerHTML = `Apakah kamu yakin ingin menghapus Kelas <strong>"${nama}"</strong>? Siswa dan Faktur yang terkait dengan kelas ini akan otomatis terhapus dan tidak dapat dikembalikan`;
         });
     });
 });

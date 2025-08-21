@@ -61,7 +61,7 @@ class KelasController extends Controller
         $kelasIndex = Kelas::all();
         $kelasDetail = $kelas;
         return view('dashboard.update_kelas', [
-            'title' => 'Edit kelas',
+            'title' => 'Edit Kelas',
             'page' => 'd_kelas'
         ], compact('kelas', 'kelasDetail'));
     }
