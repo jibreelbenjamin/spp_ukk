@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SppController;
@@ -9,10 +10,6 @@ use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\PembayaranController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('dashboard.home', ['title' => 'Dashboard', 'page' => 'home']);
-});
-
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::middleware(['checklogin'])->group(function () {
@@ -20,9 +17,8 @@ Route::middleware(['checklogin'])->group(function () {
     Route::get('/logout', [AuthController::class, 'logout']);
 });
 
-Route::get('/home', function () {
-    return view('dashboard.home', ['title' => 'Dashboard', 'page' => 'home']);
-});
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/home', [HomeController::class, 'index']);
 
 Route::get('/me', function () {
     return view('dashboard.profile', ['title' => 'Profile page', 'page' => 'p_profile']);
