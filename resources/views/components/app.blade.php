@@ -10,13 +10,6 @@ $style_idle = 'w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-
     @vite('resources/css/app.css')
     @vite('resources/css/style.css')
     @vite('resources/js/app.js')
-    <style>
-        .dt-layout-row:has(.dt-search),
-.dt-layout-row:has(.dt-length),
-.dt-layout-row:has(.dt-paging) {
-  display: none !important;
-}
-    </style>
     <title>{{ $halaman }} - SPP Online</title>
   </head>
   <body>

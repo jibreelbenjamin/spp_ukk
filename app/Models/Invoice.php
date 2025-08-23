@@ -17,6 +17,7 @@ class Invoice extends Model
         'tanggal_bayar',
         'bulan_dibayar',
         'tahun_dibayar',
+        'id_spp',
         'jumlah_bayar',
         'keterangan',
         'id_pembayaran',
@@ -31,6 +32,11 @@ class Invoice extends Model
     public function siswa()
     {
         return $this->belongsTo(Siswa::class, 'nisn');
+    }
+
+    public function spp()
+    {
+        return $this->belongsTo(Spp::class, 'id_spp');
     }
 
     public function pembayaran()

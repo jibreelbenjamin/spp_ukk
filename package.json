@@ -18,6 +18,8 @@
     "dependencies": {
         "datatables.net-dt": "^2.3.2",
         "jquery": "^3.7.1",
-        "preline": "^3.2.3"
+        "lodash": "^4.17.21",
+        "preline": "^3.2.3",
+        "vanilla-calendar-pro": "^3.0.5"
     }
 }

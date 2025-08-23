@@ -37,6 +37,9 @@ Route::get('/daftar-kelas', [KelasController::class, 'index'])->name('kelas.inde
 Route::get('/daftar-pembayaran', [PembayaranController::class, 'index'])->name('pembayaran.index');
 
 // create
+Route::post('/daftar-invoice', [InvoiceController::class, 'store'])->name('faktur.save');
+Route::get('/tambah-invoice', [InvoiceController::class, 'create'])->name('faktur.create');
+
 Route::post('/daftar-siswa', [SiswaController::class, 'store'])->name('siswa.save');
 Route::get('/tambah-siswa', [SiswaController::class, 'create'])->name('siswa.create');
 
@@ -58,6 +61,7 @@ Route::get('/tambah-kelas', function () {
 });
 
 // delete
+Route::delete('/daftar-faktur/{invoice}', [InvoiceController::class, 'destroy'])->name('faktur.delete');
 Route::delete('/daftar-siswa/{siswa}', [SiswaController::class, 'destroy'])->name('siswa.delete');
 Route::delete('/daftar-pembayaran/{pembayaran}', [PembayaranController::class, 'destroy'])->name('pembayaran.delete');
 Route::delete('/daftar-spp/{spp}', [SppController::class, 'destroy'])->name('spp.delete');
@@ -65,6 +69,8 @@ Route::delete('/daftar-petugas/{user}', [UserController::class, 'destroy'])->nam
 Route::delete('/daftar-kelas/{kelas}', [KelasController::class, 'destroy'])->name('kelas.delete');
 
 // update
+Route::get('/daftar-faktur/{invoice}/edit', [InvoiceController::class, 'edit'])->name('faktur.edit');
+Route::put('/daftar-faktur/{invoice}/edit', [InvoiceController::class, 'update'])->name('faktur.update');
 Route::get('/daftar-siswa/{siswa}/edit', [SiswaController::class, 'edit'])->name('siswa.edit');
 Route::put('/daftar-siswa/{siswa}/edit', [SiswaController::class, 'update'])->name('siswa.update');
 Route::get('/daftar-pembayaran/{pembayaran}/edit', [PembayaranController::class, 'edit'])->name('pembayaran.edit');
@@ -76,11 +82,8 @@ Route::put('/daftar-petugas/{user}/edit', [UserController::class, 'update'])->na
 Route::get('/daftar-kelas/{kelas}/edit', [KelasController::class, 'edit'])->name('kelas.edit');
 Route::put('/daftar-kelas/{kelas}/edit', [KelasController::class, 'update'])->name('kelas.update');
 
-
-Route::get('/daftar-spp/12', function () {
-    return view('dashboard.faktur', ['title' => 'Daftar SPP', 'page' => 'd_spp']);
-});
-
+// detail
+Route::get('/daftar-invoice/{invoice}', [InvoiceController::class, 'show'])->name('faktur.show');
 
 Route::fallback(function () {
     return view('404'); // Or return abort(404);

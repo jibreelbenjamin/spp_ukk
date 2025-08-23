@@ -33,7 +33,6 @@ class SiswaController extends Controller
             'title' => 'Tambah Siswa',
             'page' => 'd_siswa'
         ], compact('kelas', 'spp'));
-
     }
 
     /**

@@ -12,7 +12,7 @@ class SiswaFactory extends Factory
     {
         return [
             'nisn' => $this->faker->unique()->numerify('###########'),
-            'nis' => $this->faker->unique()->numerify('##/###'),
+            'nis' => $this->faker->unique()->numerify('#####/####.###'),
             'nama_siswa' => $this->faker->name(),
             'id_kelas' => Kelas::factory(),
             'alamat' => $this->faker->streetAddress(),

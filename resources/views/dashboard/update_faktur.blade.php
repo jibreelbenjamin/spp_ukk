@@ -1,7 +1,8 @@
 <x-app :halaman='$title' :page='$page'>
-  <form action="{{ route('faktur.save') }}" method="post">
+  <form action="{{ route('faktur.update', ['invoice' => $invoice->id_invoice]) }}" method="post">
     <div>
       @csrf
+      @method('PUT')
       <div class="mb-5 first:pt-0 last:pb-0">
         <label for="af-payment-billing-contact" class="inline-block text-sm font-medium">
           Siswa
@@ -24,7 +25,7 @@
             }' class="hidden">
               <option value="">Choose</option>
               @foreach ($siswa as $item)
-                <option value="{{ $item->nisn }}" {{ old('nisn') == $item->nisn ? 'selected' : '' }}>
+                <option value="{{ $item->nisn }}" {{ $invoice->nisn == $item->nisn ? 'selected' : '' }}>
                   {{ $item->nis }} - {{ $item->kelas->nama_kelas }} {{ $item->nama_siswa }} 
                 </option>
               @endforeach
@@ -55,7 +56,7 @@
             }' class="hidden">
               <option value="">Choose</option>
               @foreach ($spp as $item)
-                <option value="{{ $item->id_spp }}" {{ old('id_spp') == $item->id_spp ? 'selected' : '' }}>
+                <option value="{{ $item->id_spp }}" {{ $invoice->id_spp == $item->id_spp ? 'selected' : '' }}>
                   Paket {{ $item->tahun }} - Rp. {{ number_format($item->nominal, 0, ',', '.') }}
                 </option>
               @endforeach
@@ -81,18 +82,18 @@
             "extraMarkup": "<div class=\"absolute top-1/2 end-3 -translate-y-1/2\"><svg class=\"shrink-0 size-3.5 text-gray-500 \" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"m7 15 5 5 5-5\"/><path d=\"m7 9 5-5 5 5\"/></svg></div>"
           }' class="hidden">
             <option value="">Choose</option>
-            <option value="1" {{ old('bulan_dibayar') == '1' ? 'selected' : '' }}>Januari</option>
-            <option value="2" {{ old('bulan_dibayar') == '2' ? 'selected' : '' }}>Februari</option>
-            <option value="3" {{ old('bulan_dibayar') == '3' ? 'selected' : '' }}>Maret</option>
-            <option value="4" {{ old('bulan_dibayar') == '4' ? 'selected' : '' }}>April</option>
-            <option value="5" {{ old('bulan_dibayar') == '5' ? 'selected' : '' }}>Mei</option>
-            <option value="6" {{ old('bulan_dibayar') == '6' ? 'selected' : '' }}>Juni</option>
-            <option value="7" {{ old('bulan_dibayar') == '7' ? 'selected' : '' }}>Juli</option>
-            <option value="8" {{ old('bulan_dibayar') == '8' ? 'selected' : '' }}>Agustus</option>
-            <option value="9" {{ old('bulan_dibayar') == '9' ? 'selected' : '' }}>September</option>
-            <option value="10" {{ old('bulan_dibayar') == '10' ? 'selected' : '' }}>Oktober</option>
-            <option value="11" {{ old('bulan_dibayar') == '11' ? 'selected' : '' }}>November</option>
-            <option value="12" {{ old('bulan_dibayar') == '12' ? 'selected' : '' }}>Desember</option>
+            <option value="1" {{ $invoice->bulan_dibayar == '1' ? 'selected' : '' }}>Januari</option>
+            <option value="2" {{ $invoice->bulan_dibayar == '2' ? 'selected' : '' }}>Februari</option>
+            <option value="3" {{ $invoice->bulan_dibayar == '3' ? 'selected' : '' }}>Maret</option>
+            <option value="4" {{ $invoice->bulan_dibayar == '4' ? 'selected' : '' }}>April</option>
+            <option value="5" {{ $invoice->bulan_dibayar == '5' ? 'selected' : '' }}>Mei</option>
+            <option value="6" {{ $invoice->bulan_dibayar == '6' ? 'selected' : '' }}>Juni</option>
+            <option value="7" {{ $invoice->bulan_dibayar == '7' ? 'selected' : '' }}>Juli</option>
+            <option value="8" {{ $invoice->bulan_dibayar == '8' ? 'selected' : '' }}>Agustus</option>
+            <option value="9" {{ $invoice->bulan_dibayar == '9' ? 'selected' : '' }}>September</option>
+            <option value="10" {{ $invoice->bulan_dibayar == '10' ? 'selected' : '' }}>Oktober</option>
+            <option value="11" {{ $invoice->bulan_dibayar == '11' ? 'selected' : '' }}>November</option>
+            <option value="12" {{ $invoice->bulan_dibayar == '12' ? 'selected' : '' }}>Desember</option>
           </select>
           <!-- End Select -->
         </div>
@@ -116,7 +117,7 @@
           }' class="hidden">
             <option value="">Choose</option>
             @for ($year = date('Y'); $year >= 2020; $year--)
-              <option value="{{ $year }}" {{ old('tahun_dibayar') == $year ? 'selected' : '' }}>{{ $year }}</option>
+              <option value="{{ $year }}" {{ $invoice->tahun_dibayar == $year ? 'selected' : '' }}>{{ $year }}</option>
             @endfor
           </select>
           <!-- End Select -->
@@ -145,7 +146,7 @@
             }' class="hidden">
               <option value="">Choose</option>
               @foreach ($pembayaran as $item)
-                <option value="{{ $item->id_pembayaran }}" {{ old('id_pembayaran') == $item->id_pembayaran ? 'selected' : '' }}>
+                <option value="{{ $item->id_pembayaran }}" {{ $invoice->id_pembayaran == $item->id_pembayaran ? 'selected' : '' }}>
                   {{ $item->nama_pembayaran }}
                 </option>
               @endforeach
@@ -170,15 +171,15 @@
             "extraMarkup": "<div class=\"absolute top-1/2 end-3 -translate-y-1/2\"><svg class=\"shrink-0 size-3.5 text-gray-500 \" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"m7 15 5 5 5-5\"/><path d=\"m7 9 5-5 5 5\"/></svg></div>"
           }' class="hidden">
             <option value="">Pilih</option>
-            <option value="lunas" {{ old('status') == 'lunas' ? 'selected' : '' }} data-hs-select-option='{
+            <option value="lunas" {{ $invoice->status == 'lunas' ? 'selected' : '' }} data-hs-select-option='{
                 "description": "Pembayaran telah selesai dan diverifikasi.",
                 "icon": "<svg class=\"shrink-0 size-3.5 text-green-600 \" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-circle-check-icon lucide-circle-check\"><circle cx=\"12\" cy=\"12\" r=\"10\"/> <path d=\"m9 12 2 2 4-4\"/> </svg>"
               }'>Lunas</option>
-            <option value="pending" {{ old('status') == 'pending' ? 'selected' : '' }} data-hs-select-option='{
+            <option value="pending" {{ $invoice->status == 'pending' ? 'selected' : '' }} data-hs-select-option='{
                 "description": "Pembayaran sedang diproses.",
                 "icon": "<svg class=\"shrink-0 size-3.5 text-amber-600 \" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-clock8-icon lucide-clock-8\"> <path d=\"M12 6v6l-4 2\"/><circle cx=\"12\" cy=\"12\" r=\"10\"/> </svg>"
               }'>Pending</option>
-            <option value="gagal" {{ old('status') == 'gagal' ? 'selected' : '' }} data-hs-select-option='{
+            <option value="gagal" {{ $invoice->status == 'gagal' ? 'selected' : '' }} data-hs-select-option='{
                 "description": "Pembayaran tidak berhasil atau ditolak.",
                 "icon": "<svg class=\"shrink-0 size-3.5 text-red-600 \" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-circle-x-icon lucide-circle-x\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"m15 9-6 6\"/> <path d=\"m9 9 6 6\"/> </svg>"
               }'>Gagal</option>
@@ -192,7 +193,7 @@
         </label>
 
         <div class="mt-2 space-y-3">
-          <textarea name="keterangan" class="py-2 px-3 sm:py-3 sm:px-4 block shadow-2xs w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" rows="3" placeholder="Buat catatan tambahan untuk faktur ini">{{ old('keterangan') }}</textarea>
+          <textarea class="py-2 px-3 sm:py-3 sm:px-4 block shadow-2xs w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" rows="3" placeholder="Buat catatan tambahan untuk faktur ini">{{ $invoice->keterangan }}</textarea>
         </div>
       </div>
 
@@ -200,11 +201,11 @@
     </div>
 
     <div class="mt-5 flex justify-end gap-x-2">
-      <a href="daftar-invoice" class="py-1.5 sm:py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none">
+      <a href="/daftar-invoice" class="py-1.5 sm:py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none">
         Kembali
       </a>
       <button class="py-1.5 sm:py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
-        Tambah Faktur
+        Update Faktur
       </button>
     </div>
   </form>

@@ -110,7 +110,8 @@
                 </option>
               @endforeach
             </select>
-            <!-- End Select -->        </div>
+            <!-- End Select -->        
+          </div>
       </div>
     </div>
 
