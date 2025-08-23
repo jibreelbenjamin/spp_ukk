@@ -6,6 +6,7 @@ use App\Models\Kelas;
 use App\Models\Spp;
 use App\Models\Siswa;
 use App\Models\Pembayaran;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 
@@ -67,7 +68,7 @@ class InvoiceController extends Controller
             'status.in' => 'Status faktur tidak valid.',
             'keterangan.max' => 'Catatan maksimal 255 karakter.',
         ]);
-        $validate['id_user'] = 1;
+        $validate['id_user'] = Auth::user()->id_user;
         $validate['jumlah_bayar'] = Spp::where('id_spp', $validate['id_spp'])->value('nominal');
         Invoice::create($validate);
         return redirect()->route('faktur.index')->with('sInvoice', 'Faktur berhasil ditambahkan!');

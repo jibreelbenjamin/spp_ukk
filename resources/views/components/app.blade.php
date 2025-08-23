@@ -42,8 +42,8 @@ $style_idle = 'w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-
 
             <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-lg mt-2 after:h-4 after:absolute after:-bottom-4 after:start-0 after:w-full before:h-4 before:absolute before:-top-4 before:start-0 before:w-full" role="menu" aria-orientation="vertical" aria-labelledby="hs-dropdown-account">
                 <div class="py-3 px-5 bg-gray-100 rounded-t-lg">
-                <p class="text-sm text-gray-500">Administrator</p>
-                <p class="text-sm font-medium text-gray-800">Jibreel Benjamin</p>
+                <p class="text-sm text-gray-500">{{ ucfirst(Auth::user()->role) }}</p>
+                <p class="text-sm font-medium text-gray-800">{{ Auth::user()->name }}</p>
                 </div>
                 <div class="p-1.5 space-y-0.5">
                 <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100" href="me">
@@ -230,12 +230,12 @@ $style_idle = 'w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-
         </p>
 
         <div class="mt-6 grid gap-y-2">
-          <button type="button" class="py-2.5 px-4 w-full inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none focus:outline-hidden focus:bg-gray-50">
+          <a href="/logout" class="py-2.5 px-4 w-full inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none focus:outline-hidden focus:bg-gray-50">
             Keluar
-          </button>
-          <button type="button" class="py-2.5 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none" data-hs-overlay="#hs-sign-out-alert-small-window">
+          </a>
+          <a type="button" class="py-2.5 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none" data-hs-overlay="#hs-sign-out-alert-small-window">
             Kembali
-          </button>
+          </a>
         </div>
       </div>
     </div>
