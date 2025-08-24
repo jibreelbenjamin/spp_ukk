@@ -12,7 +12,7 @@ class PembayaranController extends Controller
      */
     public function index()
     {
-        $pembayaran = Pembayaran::all();
+        $pembayaran = Pembayaran::latest()->paginate(15);
         return view('dashboard.daftar_pembayaran', [
             'title' => 'Daftar Pembayaran',
             'page' => 'd_pembayaran'

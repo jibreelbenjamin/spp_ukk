@@ -17,7 +17,7 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        $invoices = Invoice::all();
+        $invoices = Invoice::latest()->paginate(15);
         return view('dashboard.daftar_faktur', [
             'title' => 'Daftar Faktur',
             'page' => 'd_invoice'

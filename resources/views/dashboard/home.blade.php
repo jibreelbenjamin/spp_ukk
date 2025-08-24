@@ -224,7 +224,7 @@
                 <tr>
                     <td class="size-px whitespace-nowrap">
                         <div class="ps-6 py-2">
-                        <a class="text-sm text-blue-600 decoration-2 hover:underline" href="#">#INP-{{ $data->id_invoice }}</a>
+                        <a class="text-sm text-blue-600 decoration-2 hover:underline" href="/daftar-invoice/{{ $data->id_invoice }}">#INP-{{ $data->id_invoice }}</a>
                         </div>
                     </td>
                     <td class="size-px whitespace-nowrap">

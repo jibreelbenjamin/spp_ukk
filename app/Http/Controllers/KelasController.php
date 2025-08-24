@@ -12,7 +12,7 @@ class KelasController extends Controller
      */
     public function index()
     {
-        $kelas = Kelas::all();
+        $kelas = Kelas::latest()->paginate(15);
         return view('dashboard.daftar_kelas', [
             'title' => 'Daftar Kelas',
             'page' => 'd_kelas'

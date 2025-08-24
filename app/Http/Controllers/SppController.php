@@ -12,7 +12,7 @@ class SppController extends Controller
      */
     public function index()
     {
-        $spp = Spp::all();
+        $spp = Spp::latest()->paginate(15);
         return view('dashboard.daftar_spp', [
             'title' => 'Daftar SPP',
             'page' => 'd_spp'

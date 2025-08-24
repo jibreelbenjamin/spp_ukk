@@ -15,7 +15,7 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        $siswa = Siswa::all();
+        $siswa = Siswa::latest()->paginate(15);
         return view('dashboard.daftar_siswa', [
             'title' => 'Daftar Siswa',
             'page' => 'd_siswa'

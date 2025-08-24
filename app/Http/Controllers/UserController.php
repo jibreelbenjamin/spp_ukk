@@ -13,7 +13,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::where('id_user', '!=', Auth::user()->id_user)->get();
+        $users = User::where('id_user', '!=', Auth::user()->id_user)->latest()->paginate(15);
         return view('dashboard.daftar_petugas', [
             'title' => 'Daftar Petugas',
             'page' => 'd_petugas'
