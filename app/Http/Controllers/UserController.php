@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -12,7 +13,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::where('id_user', '!=', Auth::user()->id_user)->get();
         return view('dashboard.daftar_petugas', [
             'title' => 'Daftar Petugas',
             'page' => 'd_petugas'

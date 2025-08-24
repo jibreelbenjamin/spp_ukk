@@ -6,7 +6,7 @@
     @vite('resources/css/app.css')
     @vite('resources/css/style.css')
     @vite('resources/js/app.js')
-    <title>Document</title>
+    <title>Masuk - SPP Online</title>
 </head>
 <body>
     <div class="flex items-center justify-center min-h-screen">
@@ -42,7 +42,7 @@
                     <div class="max-w-sm">
                     <label class="block text-sm mb-2">Password</label>
                     <div class="relative">
-                        <input id="hs-toggle-password" type="password" name="password" class="py-2.5 sm:py-3 ps-4 pe-10 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Enter password">
+                        <input id="hs-toggle-password" type="password" name="password" class="py-2.5 sm:py-3 ps-4 pe-10 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Masukan password">
                         <button type="button" data-hs-toggle-password='{
                             "target": "#hs-toggle-password"
                         }' class="absolute inset-y-0 end-0 flex items-center z-20 px-5 cursor-pointer text-gray-400 rounded-e-md focus:outline-hidden focus:text-blue-600">
@@ -59,7 +59,7 @@
                     </div>
                     <!-- End Form Group -->
         
-                    <button type="submit" class="mt-3 w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">Sign in</button>
+                    <button type="submit" class="mt-3 w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">Masuk</button>
                     </div>
                 </form>
                 <!-- End Form -->

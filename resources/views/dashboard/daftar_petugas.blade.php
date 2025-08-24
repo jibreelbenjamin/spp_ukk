@@ -83,7 +83,7 @@
             </thead>
 
             <tbody class="divide-y divide-gray-200">              
-              @foreach ($users as $data)
+              @forelse ($users as $data)
               <tr>
                 <td class="size-px whitespace-nowrap">
                   <div class="ps-6 py-2">
@@ -139,7 +139,25 @@
                   </div>
                 </td>
               </tr>
-              @endforeach
+              @empty
+              <tr>
+                <td colspan="10">
+
+                  <div class="text-center py-20 px-4 sm:px-6 lg:px-8">
+                    <svg class="block size-20 font-bold text-blue-600 mx-auto" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-grid2x2-x-icon lucide-grid-2x2-x"><path d="M12 3v17a1 1 0 0 1-1 1H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6a1 1 0 0 1-1 1H3"/><path d="m16 16 5 5"/><path d="m16 21 5-5"/></svg>
+                    <p class="mt-3 text-gray-600">Daftar yang anda kunjungi kosong,</p>
+                    <p class="text-gray-600">silahkan isi data terlebih dahulu.</p>
+                    <div class="mt-5 flex flex-col justify-center items-center gap-2 sm:flex-row sm:gap-3">
+                      <a href="tambah-petugas" class="w-full sm:w-auto py-2 px-3 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                        <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                        Tambah petugas
+                      </a>
+                    </div>
+                  </div>
+
+                </td>
+              </tr>
+              @endforelse
             </tbody>
           </table>
           <!-- End Table -->
