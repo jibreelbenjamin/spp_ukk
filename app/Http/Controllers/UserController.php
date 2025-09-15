@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -33,24 +34,27 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $validate = $request->validate([
-            'username' => 'required|string|min:3|unique:users,username',
-            'name'     => 'required|string|min:3',
-            'password' => 'required|string|min:8',
-            'role'     => 'required|string|in:admin,petugas'
+        $request->validate([
+            'password_old' => 'required',
+            'password_new' => 'required|string|min:8',
         ], [
-            'username.required' => 'Username harus diisi.',
-            'username.unique'   => 'Username sudah terdaftar.',
-            'name.required'     => 'Nama harus diisi.',
-            'password.required' => 'Password harus diisi.',
-            'username.min'      => 'Username minimal harus 8 karakter.',
-            'name.min'          => 'Nama minimal harus 8 karakter.',
-            'password.min'      => 'Password minimal harus 8 karakter.',
-            'role.required'     => 'Role harus dipilih.',
-            'role.in'           => 'Role hanya boleh berisi admin atau petugas.'
+            'password_old.required' => 'Password lama harus diisi.',
+            'password_new.required' => 'Password baru harus diisi.',
+            'password_new.min'      => 'Password baru minimal 8 karakter.',
         ]);
-        User::create($validate);
-        return redirect()->route('petugas.index')->with('sPetugas', 'Petugas berhasil ditambahkan!');
+
+        // Cek apakah password lama sesuai
+        if (!Hash::check($request->password_old, $user->password)) {
+            return back()->withErrors(['password_old' => 'Password lama tidak sesuai.']);
+        }
+
+        // Update password baru
+        $user->update([
+            'password' => Hash::make($request->password_new),
+        ]);
+
+        return redirect()->route('petugas.index')
+            ->with('sPetugas', 'Password berhasil diperbarui!');
     }
 
     /**
@@ -73,6 +77,40 @@ class UserController extends Controller
             'page' => 'd_petugas'
         ], compact('user', 'petugasDetail'));
     }
+
+    public function password(User $user)
+    {
+        $petugasIndex = User::all();
+        $petugasDetail = $user;
+        return view('dashboard.update_password_petugas', [
+            'title' => 'Edit password',
+            'page' => 'd_petugas'
+        ], compact('user', 'petugasDetail'));
+    }
+
+    public function password_update(Request $request, User $user)
+    {
+        $request->validate([
+            'password_old' => 'required',
+            'password_new' => 'required|string|min:8',
+        ], [
+            'password_old.required' => 'Password lama harus diisi.',
+            'password_new.required' => 'Password baru harus diisi.',
+            'password_new.min'      => 'Password baru minimal 8 karakter.',
+        ]);
+
+        if (!Hash::check($request->password_old, $user->password)) {
+            return back()->withErrors(['password_old' => 'Password lama petugas tidak sesuai.']);
+        }
+
+        $user->update([
+            'password' => Hash::make($request->password_new),
+        ]);
+
+        return redirect()->route('petugas.index')
+            ->with('sPetugas', 'Password berhasil diperbarui!');
+    }
+
 
     /**
      * Update the specified resource in storage.

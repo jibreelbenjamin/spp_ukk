@@ -75,6 +75,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::delete('/daftar-petugas/{user}', [UserController::class, 'destroy'])->name('petugas.delete');
     Route::get('/daftar-petugas/{user}/edit', [UserController::class, 'edit'])->name('petugas.edit');
     Route::put('/daftar-petugas/{user}/edit', [UserController::class, 'update'])->name('petugas.update');
+    Route::get('/daftar-petugas/{user}/edit_password', [UserController::class, 'password'])->name('petugas_p.edit');
+    Route::put('/daftar-petugas/{user}/edit_password', [UserController::class, 'password_update'])->name('petugas_p.update');
 
     // pembayaran
     Route::get('/daftar-pembayaran', [PembayaranController::class, 'index'])->name('pembayaran.index');

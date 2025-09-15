@@ -15,6 +15,7 @@
     ];
 @endphp
 <x-app :halaman='$title' :page='$page'>
+    <p>Selamat datang <br> <span class="text-xl font-bold">{{  Auth::user()->name }}!</span></p>
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         <div class="flex flex-col bg-white border border-gray-200 shadow-2xs rounded-xl">
         <div class="p-4 md:p-5">
